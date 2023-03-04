@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 // #define N 10
+typedef float mtype;
 int N = 10;
 
 int main(int argc, char** argv){
@@ -12,11 +13,10 @@ int main(int argc, char** argv){
     }
     
     FILE* f = fopen("binary", "rb");
-    double* A = malloc(sizeof(double) * N*N);
+    mtype* A = malloc(sizeof(mtype) * N*N);
 
     for (int i = 0; i < N; ++i){
-        // double to_read = A[i*N];
-        fread(A+i*N, sizeof(double), N, f);
+        fread(A+i*N, sizeof(mtype), N, f);
     }
 
     for (int i = 0; i < N; ++i){

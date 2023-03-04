@@ -90,11 +90,16 @@ int main(int argc, char** argv){
             }
         }
         if (delta > olddelta && k != 0){
-            printf("Delta raised on %d iteration!\n", k+1);
+            printf("Delta raised on %d iteration: %f -> %f\n", k+1, olddelta, delta);
         }
     }
 
+    FILE* f = fopen("binary", "wb");
+    for (int i = 0; i < Ny; ++i){
+        fwrite(Phi + (i*Nx), sizeof(float), Nx, f);
+    }
 
+    fclose(f);
     free(rho);
     free(Phi);
 
